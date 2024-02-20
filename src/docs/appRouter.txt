@@ -1,0 +1,18 @@
+El routing es dinámico, es decir no hay que configurar nada. Solo se basa en los nombres de las carpetas para las rutas y en los nombres de los archivos para configurar lo que se muestra en esa ruta.
+Por ejemplo:
+/ (raiz) tiene un archivo page.tsx . Es lo primero que se muestra cuando entras a <dominio>
+/about tiene un archivo page.tsx. Es lo que se muestra cuando se entra <dominio>/about
+
+Rutas dinámicas
+Supongamos que tenemos la ruta posts/:id y el id es dinámico.
+Entonces tenemos las carpetas:
+app
+|_posts
+    |_[id] (puede ser id o puede ser slug, lo que sea, lo importante es que va entre corchetes)
+
+Luego si ponemos una ruta entre paréntesis, ejemplo (auth).. no se cuenta como route, sino más bien para agrupar
+
+El routing y las páginas, etc debería estar en la carpeta "app" de App routing.
+El resto (components, libraries) van dentro de src para no confundir.
+
+'@/components/....' corresponde a la ruta del proyecto raiz o sea src/components

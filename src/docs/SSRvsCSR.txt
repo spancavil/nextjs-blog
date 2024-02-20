@@ -1,0 +1,32 @@
+Rendering
+
+React => Envia un esqueleto de HTML minimo y toda la lógica de JS al cliente. El cliente la ejecuta y se renderiza el site. Esto puede traer complicaciones:
+1. La carga que se le envía al cliente puede ser grande y peor si hay problemas de latencia.
+2. El cliente debe ejecutar mucho código JS, lo que puede ser un problema si tiene una PC lenta.
+3. En definitiva tardará más en renderizarse la app.
+
+SSR (NextJS)
+Pros:
+. Carga inicial rápida
+. Ayuda al SEO, ya que envía todo prerenderizado y los crawlers pueden buscarlo mejor
+. Mejor para usuarios con internet lenta o dispositivos viejos
+. Mejor para las llamadas a la API desde el server, que tiene más cercanía con quizás la DB.
+
+Cons:
+. Menos interacción
+. Aumenta la carga del server
+. Es más difícil manejar estados
+. Page loads subsequentes son más lentas
+
+CSR (React)
+Pros:
+. Luego de la carga inicial es más rápida la interacción
+. Menos carga del servidor
+. Mejor para la interactividad con el usuario
+
+Cons:
+. Malo para el SEO.
+. Initial load lenta.
+. Depende del cliente renderizar la app.
+
+Entonces la idea es que en NextJS podemos combinar los dos tipos: CSR y SSR. Por default se usa SSR, solo utilizaremos CSR cuando no quede otra (uso de hooks e interacciones con usuario) con la directiva "use client" arriba de todo en el componente.

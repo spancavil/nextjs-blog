@@ -1,0 +1,12 @@
+Client side
+useRouter() => push, replace, refresh, goBack, goForward
+usePathname() => returns path
+useSearchParams() => return query params
+
+Server side
+Viene dentro de los params si es server side component
+const Component = ({params, searchParams, pathname}) => {
+    console.log(params) // {slug: <:slug>}
+    ....
+} 
+
