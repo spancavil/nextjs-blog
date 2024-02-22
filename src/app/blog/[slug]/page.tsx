@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { Post } from '../../../interfaces/Post'
-import { Suspense } from 'react'
+import { IPost } from '@/interfaces/IPost'
 import dynamic from 'next/dynamic'
+import { getPostById } from '@/domain/repository/post.repository'
 const PostUser = dynamic(() => import('@/components/postUser/PostUser'), {
   ssr: false,
 })
@@ -11,17 +11,17 @@ type Props = {
   searchParams?: Object
 }
 
-const fetchPostById = async (postId: string): Promise<Post> => {
+/* const fetchPostById = async (postId: string): Promise<IPost> => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${postId}`
   ) //by default caches response
   if (!response.ok) throw new Error('Error getting posts')
   return await response.json()
-}
+} */
 
 const BlogById = async ({ params }: Props) => {
   const { slug: id } = params
-  const postDetail = await fetchPostById(id)
+  const postDetail = await getPostById(id)
 
   return (
     <div className="flex flex-col lg:flex-row gap-[50px] h-full w-full justify-start items-start">
@@ -38,7 +38,7 @@ const BlogById = async ({ params }: Props) => {
           {postDetail.title}
         </h1>
         {/* Suspense is what render when loading. It can be a skeleton too */}
-        <PostUser userId={postDetail.userId} />
+        <PostUser userId={postDetail.userId as string} />
         <h3 className="text-sm text-white pt-5">{postDetail.body}</h3>
       </div>
     </div>

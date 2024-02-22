@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import getRandomDate from '@/lib/randomDate'
 import Link from 'next/link'
-import { Post } from '@/interfaces/Post'
+import { IPost } from '@/interfaces/IPost'
 type Props = {
-  post: Post
+  post: IPost
 }
 
 const PostCard = ({post}: Props) => {
@@ -20,7 +20,7 @@ const PostCard = ({post}: Props) => {
       <div className="h-2/5 bg-dark-blue flex flex-col gap-2 justify-start items-start p-3">
         <h3 className='text-2xl text-white'>{post.title}</h3>
         <h4 className='text-md text-white'>{post.body}</h4>
-        <Link className='text-md text-blue underline' href={`/blog/${post.id}`}>Read more...</Link>
+        <Link className='text-md text-blue underline' href={`/blog/${post._id}`}>Read more...</Link>
       </div>
     </div>
   )

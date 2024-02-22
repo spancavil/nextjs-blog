@@ -1,21 +1,22 @@
 import Image from 'next/image'
 import getRandomDate from '@/lib/randomDate'
-import { User } from '@/interfaces/User'
+import { IUser } from '@/interfaces/IUser'
+import { getUserById } from '@/domain/repository/user.repository'
 
 type Props = {
-  userId: number
+  userId: string
 }
 
-const fetchUserData = async (userId: number): Promise<User> => {
+/* const fetchUserData = async (userId: number): Promise<IUser> => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/users/${userId}`, {cache: 'no-store'}
   ) //by default caches response
   if (!response.ok) throw new Error('Error getting posts')
   return await response.json()
-}
+} */
 
 const PostUser = async ({ userId }: Props) => {
-  const user = await fetchUserData(userId)
+  const user = await getUserById(userId)
   const randomDate = getRandomDate(new Date(2023, 0, 1), new Date())
   const randomDateFormatted = `${randomDate.getFullYear()} - ${randomDate.getMonth()} - ${randomDate.getDate()}`
 
@@ -33,7 +34,7 @@ const PostUser = async ({ userId }: Props) => {
         <h4 className="text-lg font-bold md:text-2xl md:font-bold text-white">
           Author
         </h4>
-        <h4 className="text-md md:text-xl text-white">{user.name}</h4>
+        <h4 className="text-md md:text-xl text-white">{user.username}</h4>
       </div>
       <div>
         <h4 className="text-lg font-bold md:text-2xl text-white md:font-bold">
