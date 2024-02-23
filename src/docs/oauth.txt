@@ -1,0 +1,8 @@
+1. Configurar app/api/auth/[...nextauth]/route.ts
+El ...nextauth es porque esa route.ts va a handlear todas las rutas disponibles de auth (signIn, signOut, callback, etc)
+
+2.Configurar dentro de route al provider como figura en la documentación. Cada provider tendra un clientid y un secret. Además hay que colocar el callback (en el dashboard del provider)
+
+3. Usar un NexAuthProvider (un componente aparte) que utilice "use client" porque necesitará entrar al React Context y eso sólo se puede si el componente es CSR.
+
+4. Utilizar el hook useSession donde corresponda y ver la sesión iniciada. También se puede utilizar signIn, signOut, etc, importándolos desde next-auth en los componentes.

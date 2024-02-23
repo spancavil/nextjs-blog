@@ -2,25 +2,26 @@
 import NavLink from './navLink/NavLink'
 import Button from './button/Button'
 import { useState } from 'react'
+import { signOut, useSession } from 'next-auth/react'
 
 type Props = {}
 
 const Links = (props: Props) => {
+  const session = useSession()
   const [open, setOpen] = useState(false)
-  const session = true
   const isAdmin = true
   const links = [
     { title: 'About', path: '/about' },
     { title: 'Contact', path: '/contact' },
     { title: 'Blog', path: '/blog' },
   ]
-  if (!session) {
+  if (session.status === "unauthenticated") {
     links.push(
       { title: 'Register', path: '/register' },
       { title: 'Login', path: '/login' }
     )
   }
-  if (session && isAdmin) {
+  if (session.data?.user && isAdmin) {
     links.push({ title: 'Admin', path: '/admin' })
   }
   return (
@@ -29,7 +30,7 @@ const Links = (props: Props) => {
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
-        {session && <Button title="Logout" />}
+        {session.status === 'authenticated' && <Button onClick={()=> signOut()} title="Logout" />}
       </div>
       <button
         onClick={() => setOpen((value) => !value)}
@@ -42,7 +43,7 @@ const Links = (props: Props) => {
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}
-          {session && <Button title="Logout" />}
+          {session.status === 'authenticated' && <Button title="Logout" onClick={()=> signOut()}/>}
         </div>
       )}
     </div>

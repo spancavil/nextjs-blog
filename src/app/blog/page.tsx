@@ -6,6 +6,8 @@ import { Toaster } from 'sonner'
 import dynamic from 'next/dynamic'
 import { getPosts } from '@/domain/repository/post.repository'
 import { getUsers } from '@/domain/repository/user.repository'
+import { metadata } from '../layout'
+import { Metadata } from 'next'
 const PostCard = dynamic(() => import('@/components/postCard/PostCard'), {
   ssr: false,
 })
@@ -16,6 +18,15 @@ const PostCard = dynamic(() => import('@/components/postCard/PostCard'), {
   if (!response.ok) throw new Error('Error getting posts')
   return await response.json()
 } */
+
+//Must be exported for it to work
+export const generateMetadata = async (props: object): Promise<Metadata> => {
+  
+  return{
+    title: "Blog section",
+    description: "Blog section"
+  }
+}
 
 const Blog = async () => {
   let posts: IPost[] = []

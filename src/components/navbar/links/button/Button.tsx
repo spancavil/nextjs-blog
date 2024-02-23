@@ -1,11 +1,15 @@
 type Props = {
-    title: string
+  title: string
+  onClick?: () => void
 }
 
-const Button = ({title}: Props) => {
+const Button = ({ title, onClick = () => {} }: Props) => {
   return (
-    <button className="p-3 cursor-pointer font-bold bg-violet">
-        {title}
+    <button
+      className="p-3 cursor-pointer font-bold bg-violet"
+      onClick={onClick}
+    >
+      {title}
     </button>
   )
 }

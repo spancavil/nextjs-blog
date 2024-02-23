@@ -19,11 +19,9 @@ const userSchema = new mongoose.Schema<IUser>(
     },
     password: {
         type: String,
-        required: true
     },
     isAdmin: {
         type: Boolean,
-        required: false,
         default: false
     },
     address: {

@@ -1,0 +1,5 @@
+El título y la description, que están presentes en la metadata es importante para el SEO (search engine optimization)
+Entonces en cada archivo page.tsx puede haber un objeto metadata al ppio con title y page.
+
+Una función interesante de Next es que tiene un nombre reservado para una función que se llama "generateMetadata", la misma sirve para generar por ejemplo el title y la description dinámicamente por ejemplo en base a los params.
+Ver ejemplo en post y post/:slug

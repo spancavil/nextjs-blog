@@ -14,9 +14,10 @@ export interface IUser {
       lng?: string
     }
   }
+  provider?: string
   createdAt?: Date
   updatedAt?: Date
-  image?: string,
-  isAdmin?: boolean,
+  image?: string
+  isAdmin?: boolean
   password?: string
 }

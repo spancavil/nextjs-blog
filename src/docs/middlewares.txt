@@ -1,0 +1,2 @@
+Los middlewares interceptan todo antes de renderizar la page.
+Por ejemplo se pueden poner middlewares en las distintas rutas para hacer verificaciones antes de renderizar y redirigir si correspondiera.

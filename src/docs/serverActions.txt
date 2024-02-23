@@ -1,0 +1,5 @@
+Son llamados asincronos que se utilizan con la directiva "use server".
+Si tenemos un pocos esquemas con pocas collections quizas las server actions podrian ser buena opción.
+
+Sin embargo si se complica un poco y se utilizan más collections tal vez esté mejor usar api routes.
+

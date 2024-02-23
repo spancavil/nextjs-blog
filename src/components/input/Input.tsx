@@ -16,13 +16,13 @@ const Input = ({
 }: InputProps) => {
   return (
     <>
-      <label htmlFor={label} className="text-violet mb-2 block text-sm">
+      <label htmlFor={label} className="text-white mb-2 block text-sm">
         {title}
       </label>
       {textArea ? (
         <textarea
           rows={5}
-          className="p-3 rounded block mb-2 bg-violet text-white w-full hover:border-0"
+          className="p-3 rounded block mb-2 bg-violet text-white w-full hover:border-0 focus:outline-none"
           {...register(label, {
             required: {
               value: true,
@@ -32,11 +32,11 @@ const Input = ({
         />
       ) : (
         <input
-          className="p-3 rounded block mb-2 bg-violet text-white w-full"
+          className="p-3 rounded block mb-2 bg-violet text-white w-full focus:outline-none"
           type={type || 'text'}
           {...register(label, {
             required: {
-              value: true,
+              value: label === 'username' ? false : true,
               message: `${label} is required`,
             },
           })}

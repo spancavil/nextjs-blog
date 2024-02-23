@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { IPost } from '@/interfaces/IPost'
 import dynamic from 'next/dynamic'
 import { getPostById } from '@/domain/repository/post.repository'
+import { Metadata } from 'next'
 const PostUser = dynamic(() => import('@/components/postUser/PostUser'), {
   ssr: false,
 })
@@ -9,6 +10,19 @@ const PostUser = dynamic(() => import('@/components/postUser/PostUser'), {
 type Props = {
   params: { slug: string }
   searchParams?: Object
+}
+
+//Must be exported for it to work
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const { slug: id } = params
+  //Don't worry Next won't fetch twice if is the same request
+  const postDetail = await getPostById(id)
+  return {
+    title: `Blog with id: ${postDetail._id}`,
+    description: `Fabulous description: ${postDetail.body}`,
+  }
 }
 
 /* const fetchPostById = async (postId: string): Promise<IPost> => {
