@@ -1,10 +1,10 @@
-import { User } from '@/domain/schemas/user.schema'
 import { IUser } from '@/interfaces/IUser'
 import { dbAtlasConn } from '@/lib/dbConnection'
 import NextAuth, { AuthOptions } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import bcrypt from 'bcrypt'
+import { User } from '@/domain/schemas/user.schema'
 
 export const authOptions: AuthOptions = {
   // Configure one or more authentication providers
@@ -42,7 +42,8 @@ export const authOptions: AuthOptions = {
             id: userFound._id,
             name: userFound.username,
             email: userFound.email,
-            image: userFound.image
+            image: userFound.image,
+            isAdmin: userFound.isAdmin
           }
         }
       },
@@ -59,13 +60,14 @@ export const authOptions: AuthOptions = {
         try {
           dbAtlasConn()
           const userFound = await User.findOne({ email: user.email }).lean()
-          console.log(userFound);
+          console.log(userFound)
           if (!userFound) {
             const newUser: IUser = {
               name: user.name as string,
               email: user.email as string,
               image: user.image as string,
               provider: account.provider,
+              isAdmin: false,
             }
             await User.create(newUser)
           }
@@ -75,11 +77,11 @@ export const authOptions: AuthOptions = {
         }
       }
       return true
-    },
+    }
   },
   pages: {
-    signIn: '/login'
-  }
+    signIn: '/login',
+  },
 }
 const handler = NextAuth(authOptions)
 

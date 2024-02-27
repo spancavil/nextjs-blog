@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { showToast } from '@/utils/showToast'
 import { Toaster } from 'sonner'
 import Input from '@/components/input/Input'
+import Image from 'next/image'
 
 type Props = {}
 
@@ -69,10 +70,13 @@ const Login = (props: Props) => {
         </form>
         <h1 className="text-slate-200 font-bold text-xl mb-4">Or</h1>
         <button
-          className="w-full bg-slate-700 text-white p-3 rounded-lg mt-6 border-teal-400"
+          className="w-full bg-slate-700 rounded-lg p-2 border-teal-400 flex justify-center gap-3 items-center "
           onClick={() => signIn('github')}
         >
-          Sign in on Github
+          <p text-white p-3>Continue with Github</p>
+          <div className='w-8 h-8 relative'>
+            <Image src={'/github-mark.png'} alt='github' fill className='object-contain'/>
+          </div>
         </button>
       </div>
       <Toaster />

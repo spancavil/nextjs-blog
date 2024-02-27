@@ -1,9 +1,9 @@
+Add logo OK
+Modify footer OK
 Add logger and write logs when errors
 Edit readme.md
 Add transitions
 Edit mobile pages
 Add user image
-Add logo
 Add loader
-Modify footer
 Validate forms with zod

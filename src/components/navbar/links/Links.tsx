@@ -3,6 +3,7 @@ import NavLink from './navLink/NavLink'
 import Button from './button/Button'
 import { useState } from 'react'
 import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
 
 type Props = {}
 
@@ -36,7 +37,9 @@ const Links = (props: Props) => {
         onClick={() => setOpen((value) => !value)}
         className="flex md:hidden"
       >
-        Menu
+        <div className='min-h-[20px] min-w-[20px]'>
+          <Image src={'/menu.png'} alt='burger' width={20} height={20}/>
+        </div>
       </button>
       {open && (
         <div className="absolute top-[100px] right-0 w-1/2 h-[calc(100vh-100px)] bg-violet flex flex-col items-center justify-center gap-3 md:hidden">
