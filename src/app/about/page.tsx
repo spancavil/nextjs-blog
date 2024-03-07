@@ -13,7 +13,7 @@ const About = (props: Props) => {
         </h1>
         <p className="text-white text-lg">
           We create digital ideas that are bigger, bolder, braver and better. We
-          believe in good ideas flexibility and precission We're world's Our
+          believe in good ideas flexibility and precission We are worlds Our
           Special Team best consulting & finance solution provider. Wide range
           of web and software development services.
         </p>
