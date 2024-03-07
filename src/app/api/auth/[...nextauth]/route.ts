@@ -6,7 +6,7 @@ import GithubProvider from 'next-auth/providers/github'
 import bcrypt from 'bcrypt'
 import { User } from '@/domain/schemas/user.schema'
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   // Configure one or more authentication providers
   providers: [
     Credentials({
