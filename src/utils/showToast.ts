@@ -1,4 +1,6 @@
-import { Position, toast } from 'sonner'
+import { toast } from 'sonner'
+import { Position } from './position.type'
+
 export type ToastProps = {
     message: string
     type?: 'error' | 'success' | 'info'
