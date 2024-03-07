@@ -34,7 +34,7 @@ const PostUser = async ({ userId }: Props) => {
         <h4 className="text-lg font-bold md:text-2xl md:font-bold text-white">
           Author
         </h4>
-        <h4 className="text-md md:text-xl text-white">{user.username}</h4>
+        <h4 className="text-md md:text-xl text-white">{user && user.username}</h4>
       </div>
       <div>
         <h4 className="text-lg font-bold md:text-2xl text-white md:font-bold">
